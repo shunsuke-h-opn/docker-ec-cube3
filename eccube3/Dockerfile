@@ -1,13 +1,11 @@
 FROM nanasess/php7-ext-apache
 
-MAINTAINER Kentaro Ohkouchi <nanasess@fsm.ne.jp>
-
 ENV PGUSER cube3_dev_user
 ENV ECCUBE_PATH /var/www
 
 ARG DBTYPE=pgsql
-ARG ECCUBE_REPOS=https://github.com/EC-CUBE/ec-cube.git
-ARG ECCUBE_BRANCH=master
+ARG ECCUBE_REPOS=https://github.com/EC-CUBE/ec-cube3.git
+ARG ECCUBE_BRANCH=3.0
 
 RUN useradd -ms /bin/bash ${PGUSER}
 
@@ -28,5 +26,6 @@ RUN composer install
 COPY config/exec_env.sh ${ECCUBE_PATH}/exec_env.sh
 RUN chmod +x ${ECCUBE_PATH}/exec_env.sh
 RUN ls -lt ${ECCUBE_PATH}/
+RUN /etc/init.d/apache2 start
 
 EXPOSE 80

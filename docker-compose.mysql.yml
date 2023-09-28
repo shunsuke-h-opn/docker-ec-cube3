@@ -1,7 +1,8 @@
 version: "2"
 services:
   db:
-    image: mysql:latest
+    image: mysql:5.7
+    platform: linux/amd64
     ports:
       - 3307:3306
     environment:

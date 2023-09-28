@@ -28,6 +28,6 @@ RUN chmod +x ${ECCUBE_PATH}/exec_env.sh
 RUN ls -lt ${ECCUBE_PATH}/
 RUN chmod 777 -R html
 RUN chmod 777 -R app
-RUN /etc/init.d/apache2 restart
+CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
 
 EXPOSE 80

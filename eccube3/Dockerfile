@@ -26,6 +26,8 @@ RUN composer install
 COPY config/exec_env.sh ${ECCUBE_PATH}/exec_env.sh
 RUN chmod +x ${ECCUBE_PATH}/exec_env.sh
 RUN ls -lt ${ECCUBE_PATH}/
-RUN /etc/init.d/apache2 start
+RUN chmod 777 -R html
+RUN chmod 777 -R app
+RUN /etc/init.d/apache2 restart
 
 EXPOSE 80
